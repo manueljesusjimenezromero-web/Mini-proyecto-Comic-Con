@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comic-Con</title>
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    
+    <form action="comicon.php" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"/>
+        <br>
+        <label for="edad">Edad:</labe>
+        <input type="number" id="edad" name="edad"/>
+        <br>
+        <label for="tipEnt">Tipo de Entrada: </label>
+        <select id="tipEnt" name="tipoEntrada">
+            <option value="general">General</option>
+            <option value="vip">VIP</option>
+            <option value="infantil">Infantil</option>
+        </select>
+        <br>
+        <label for="talleres" >Talleres Especiales: </label>
+        
+            <br>
+            <input type="checkbox" name="talleres[]" id="games" value="10">Torneo de Videojuegos (10 euros)
+            <br>
+            <input type="checkbox" name="talleres[]" id="cosplay" value="15">Taller de Cosplay (15 euros)
+            <br>
+            <input type="checkbox" name="talleres[]" id="rol" value="5">Zona de Rol en Vivo (5 euros)
+            <br>
+        
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
