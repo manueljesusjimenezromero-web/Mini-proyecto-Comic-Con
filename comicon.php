@@ -1,8 +1,8 @@
 
 <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors','1');
-    ini_set('display_startup_errors', '1');
+    
+    try{
+    
     if ($_SERVER['REQUEST_METHOD']==='POST'){
 
 
@@ -15,13 +15,6 @@
             $total+=$taller;
         }
     }
-    echo "<p>Nombre: " . htmlspecialchars($nombre) . "</p>";
-    echo "<p>Edad: " . htmlspecialchars($edad) . "</p>";
-    echo "<p>Tipo de entrada: " . htmlspecialchars($tipo) . "</p>";
-    echo "<p>Total talleres:" . $total . " €</p>";
-    
-    try{
-    
     
     
        
