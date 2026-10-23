@@ -14,14 +14,14 @@
             $total=0;
 
             foreach ($talleres as $taller => $precio){
-                
+                $total += (int)$precio;
             }
             
             if (is_numeric($nombre)) {
-
+                throw new Exception ("Error: solo se permiten caracteres");
             }
             if (!is_numeric($edad) || $edad < 0 || $edad > 120) {
-
+                throw new Exception ("Error: la edad esta fuera de rango");
             }
 
             if ($total===0){
@@ -34,7 +34,7 @@
             ENT_QUOTES, 'UTF-8'
             );
             
-                echo "<p>".$tipo."</p>";
+            echo "<p>".$tipo."</p>";
             
 
     
@@ -42,7 +42,7 @@
     
     
     }catch (Exception $e){
-
+        echo "Error capturado: ". htmlspecialchars($e->getMessage()). "<br>";
     }finally{
 
     }
