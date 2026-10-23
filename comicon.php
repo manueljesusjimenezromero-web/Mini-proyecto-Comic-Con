@@ -57,7 +57,9 @@ try {
         $total = procesarInscripcion($tipo, $talleres);
         $exito = true;
 
-        echo "<p>Total: " . $total . " euros</p>";
+        echo    "<p>Talleres: ".foreach ($talleres as $taller => $precio) {
+                                echo "<p>".$taller.":".$precio."</p>";}."</p><br>"
+                "<p>Total: " . $total . " euros</p>";
     }
 } catch (Exception $e) {
     echo "Error capturado: " . htmlspecialchars($e->getMessage()) . "<br>";
