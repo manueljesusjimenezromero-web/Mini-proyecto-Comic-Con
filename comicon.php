@@ -2,6 +2,29 @@
 <?php
     ini_set('display_errors',1);
     error_reporting(E_ALL);
+
+    function calcularPrecioBase(string $tipo,int $total){
+        switch ($tipo) {
+                case "General":
+                    $total += 30;
+                    break;
+                case "VIP":
+                    $total += 60;
+                    break;
+                case "Infantil":
+                    $total += 10;
+                    break;
+                default:
+                    throw new Exception("Tipo de entrada no válido");
+        }
+            return $total;
+     }
+
+    function procesarInscripcion() {
+        for ($talleres as $taller => $precio){
+            $total+=$taller;
+        }
+    }
     try{
     
         if ($_SERVER['REQUEST_METHOD']==='POST'){
@@ -13,16 +36,7 @@
             $talleres=$_POST['talleres']??[];  
             $total=0;
             $i=0;
-            foreach ($talleres as $taller => $precio){
-                
-                if (!is_numeric($precio)) {
-                throw new Exception ("Error: tiene que haver valores numericos");
-                }else{
-                $total += $precio;}
-
-                $i+=1;
-
-            }
+            
             
 
            $nombre = htmlspecialchars(
@@ -41,22 +55,14 @@
             if ($edad >= 18 && $tipo === "VIP"){
                 throw new Exception("Error: La entrada VIP está restringida a mayores de edad");
             }
-
-            switch ($tipo) {
-                case "General":
-                    $total += 30;
-                    break;
-                case "VIP":
-                    $total += 60;
-                    break;
-                case "Infantil":
-                    $total += 10;
-                    break;
-                default:
-                    throw new Exception("Tipo de entrada no válido");
-            }
+            $total+=procesarInscripcion();
+            $total+=calcularPrecioBase(string $tipo,int $total);
             
-
+                echo "<p>".."</p>"
+                     "<p>".."</p>"
+                     "<p>".."</p>"
+                     "<p>".."</p>"
+                     "<p>".."</p>";
     
         }
     
