@@ -12,6 +12,7 @@
             $tipo=$_POST['tipoEntrada']??"";
             $talleres=$_POST['talleres']??[];  
             $total=0;
+
             for ($talleres as $taller => $precio){
                 $total+=$precio;
 
@@ -32,6 +33,10 @@
            $nombre = htmlspecialchars(
             trim($nombre),
             ENT_QUOTES, 'UTF-8');
+
+            if ($edad >= 18 && $tipo===$tipoEntrada){
+
+            }
 
     
         }
