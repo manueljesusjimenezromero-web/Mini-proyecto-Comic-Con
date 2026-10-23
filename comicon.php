@@ -37,7 +37,9 @@
                 throw new Exception("Error: no a marcado ningun taller");
             }
 
-            if ($edad > 18 && $tipo === "VIP")
+            if ($edad < 18 && $tipo === "VIP"){
+                throw new Exception("Error: La entrada VIP está restringida a menores de edad");
+            }
         
             
 
