@@ -12,30 +12,34 @@
             $tipo=$_POST['tipoEntrada']??"";
             $talleres=$_POST['talleres']??[];  
             $total=0;
-
+            $i=0;
             foreach ($talleres as $taller => $precio){
-                $total += $precio;
+                
+                if (!is_numeric($precio)) {
+                throw new Exception ("Error: tiene que haver valores numericos");
+                }else{
+                $total += $precio;}
+
+                if ($taller){
+                    $i+=1;
+                }
+
             }
             
-
-            if (is_numeric($nombre)) {
-                throw new Exception ("Error: solo se permiten caracteres");
-            }
-            if (!is_numeric($edad) || $edad < 0 || $edad > 120) {
-                throw new Exception ("Error: la edad esta fuera de rango");
-            }
-
-            if ($total===0){
-                throw new Exception("Error: no a marcado ningun taller");
-            }
-
 
            $nombre = htmlspecialchars(
             trim($nombre),
             ENT_QUOTES, 'UTF-8'
             );
-            
-            echo "<p>".$tipo."</p>";   // General, VIP o Infantil
+            if (!is_numeric($edad) || $edad < 0 || $edad > 120) {
+                throw new Exception ("Error: la edad esta fuera de rango");
+            }
+            if ($total===0){
+                throw new Exception("Error: no a marcado ningun taller");
+            }
+
+
+        echo "<p>".$i."</p>";
             
 
     
