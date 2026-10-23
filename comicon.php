@@ -25,6 +25,8 @@
 
             }
 
+
+            
             if ($total===0){
 
             }
@@ -34,9 +36,9 @@
             trim($nombre),
             ENT_QUOTES, 'UTF-8'
             );
-            if ($edad < 18 && $tipo==="VIP"){
-                echo "<p>".$edad."</p>";
-            }
+            
+                echo "<p>".$tipo."</p>";
+            
 
     
         }
