@@ -20,7 +20,7 @@
             return $total;
      }
 
-    function procesarInscripcion() {
+    function procesarInscripcion(array $talleres,int $total) {
         for ($talleres as $taller => $precio){
             $total+=$taller;
         }
@@ -55,14 +55,10 @@
             if ($edad >= 18 && $tipo === "VIP"){
                 throw new Exception("Error: La entrada VIP está restringida a mayores de edad");
             }
-            $total+=procesarInscripcion();
+            $total+=procesarInscripcion(array $talleres, int $total);
             $total+=calcularPrecioBase(string $tipo,int $total);
             
-                echo "<p>".."</p>"
-                     "<p>".."</p>"
-                     "<p>".."</p>"
-                     "<p>".."</p>"
-                     "<p>".."</p>";
+                echo "<p>".$total."</p>";
     
         }
     
