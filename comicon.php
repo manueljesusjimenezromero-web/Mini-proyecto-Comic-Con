@@ -34,8 +34,8 @@
             trim($nombre),
             ENT_QUOTES, 'UTF-8');
 
-            if ($edad >= 18 && $tipo===$tipoEntrada){
-
+            if ($edad < 18 && $tipo===$tipoEntrada){
+                echo "<p>".$edad."</p>";
             }
 
     
