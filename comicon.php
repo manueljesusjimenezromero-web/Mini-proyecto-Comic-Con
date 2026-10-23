@@ -20,7 +20,7 @@
                 }else{
                 $total += $precio;}
 
-                $i+=1
+                $i+=1;
 
             }
             
