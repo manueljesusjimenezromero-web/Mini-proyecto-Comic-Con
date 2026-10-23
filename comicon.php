@@ -37,8 +37,8 @@
                 throw new Exception("Error: no a marcado ningun taller");
             }
 
-
-        echo "<p>".$i."</p>";
+            if ($edad > 18 && $tipo === "VIP")
+        
             
 
     
