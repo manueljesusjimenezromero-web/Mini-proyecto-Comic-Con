@@ -34,7 +34,7 @@
             ENT_QUOTES, 'UTF-8'
             );
             
-            echo "<p>".$tipo."</p>";
+            echo "<p>".$total."</p>";
             
 
     
