@@ -4,21 +4,37 @@
     error_reporting(E_ALL);
     try{
     
-    if ($_SERVER['REQUEST_METHOD']==='POST'){
+        if ($_SERVER['REQUEST_METHOD']==='POST'){
 
 
-        $nombre=$_POST['nombre']??"";
-        $edad=$_POST['edad']??"";
-        $tipo=$_POST['tipoEntrada']??"";
-        $talleres=$_POST['talleres']??[];  
-        $total=0;
-        
-        echo "<p>".$nombre."</p>";
-        echo "<p>".$edad."</p>";
-    }
+            $nombre=$_POST['nombre']??"";
+            $edad=$_POST['edad']??"";
+            $tipo=$_POST['tipoEntrada']??"";
+            $talleres=$_POST['talleres']??[];  
+            $total=0;
+            for ($talleres as $taller => $precio){
+                $total+=$precio;
+
+            }
+
+            if (is_numeric($nombre)) {
+
+            }
+            if (!is_numeric($edad) || $edad < 0 || $edad > 120) {
+
+            }
+
+            if ($total===0){
+
+            }
+
+
+           $nombre = htmlspecialchars(
+            trim($nombre),
+            ENT_QUOTES, 'UTF-8');
+
     
-    
-       
+        }
     
     
     }catch (Exception $e){
@@ -26,5 +42,6 @@
     }finally{
 
     }
+    
 
 ?>
