@@ -51,7 +51,9 @@
     }catch (Exception $e){
         echo "Error capturado: ". htmlspecialchars($e->getMessage()). "<br>";
     }finally{
-
+        echo "Finalizando el script... (Guardando traza en el servidor)<br>";
+        error_log("[" . date('Y-m-d H:i:s') . "] Operación
+        finalizada. Divisor usado: " . $divisor);
     }
     
 
