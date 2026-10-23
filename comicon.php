@@ -12,9 +12,8 @@
         $talleres=$_POST['talleres']??[];  
         $total=0;
         
-        if (!is_numeric($edad) || $edad < 0 || $edad >120 ){
-            
-        }
+        echo $nombre;
+        echo $edad;
     }
     
     
