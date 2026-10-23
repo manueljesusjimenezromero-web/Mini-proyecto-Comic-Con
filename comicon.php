@@ -9,10 +9,11 @@
         $nombre=$_POST['nombre']??"";
         $edad=$_POST['edad']??"";
         $tipo=$_POST['tipoEntrada']??"";
-        $talleres=$_POST['talleres']??[];
+        $talleres=$_POST['talleres']??[];  
         $total=0;
-        foreach ($talleres as $taller){
-            $total+=$taller;
+        
+        if (!is_numeric($edad) || $edad < 0 || $edad >120 ){
+            
         }
     }
     
