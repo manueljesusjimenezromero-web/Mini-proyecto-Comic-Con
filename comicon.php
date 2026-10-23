@@ -41,7 +41,20 @@
             if ($edad >= 18 && $tipo === "VIP"){
                 throw new Exception("Error: La entrada VIP está restringida a mayores de edad");
             }
-        
+
+            switch ($tipo) {
+                case "General":
+                    $total += 30;
+                    break;
+                case "VIP":
+                    $total += 60;
+                    break;
+                case "Infantil":
+                    $total += 10;
+                    break;
+                default:
+                    throw new Exception("Tipo de entrada no válido");
+            }
             
 
     
