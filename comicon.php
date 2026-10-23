@@ -1,75 +1,69 @@
-
 <?php
-    ini_set('display_errors',1);
-    error_reporting(E_ALL);
+declare(strict_types=1);
 
-    function calcularPrecioBase(string $tipo,int $total){
-        switch ($tipo) {
-                case "General":
-                    $total += 30;
-                    break;
-                case "VIP":
-                    $total += 60;
-                    break;
-                case "Infantil":
-                    $total += 10;
-                    break;
-                default:
-                    throw new Exception("Tipo de entrada no válido");
-        }
-            return $total;
-     }
+ini_set('display_errors', '1');
+error_reporting(E_ALL);
 
-    function procesarInscripcion(array $talleres,int $total) {
-        for ($talleres as $taller => $precio){
-            $total+=$taller;
-        }
+function calcularPrecioBase(string $tipo): int
+{
+    switch ($tipo) {
+        case "General":
+            return 30;
+        case "VIP":
+            return 60;
+        case "Infantil":
+            return 10;
+        default:
+            throw new Exception("Tipo de entrada no válido");
     }
-    try{
-    
-        if ($_SERVER['REQUEST_METHOD']==='POST'){
+}
 
+function procesarInscripcion(string $tipo, array $talleres): int
+{
+    $total = calcularPrecioBase($tipo);
 
-            $nombre=$_POST['nombre']??"";
-            $edad=$_POST['edad']??"";
-            $tipo=$_POST['tipoEntrada']??"";
-            $talleres=$_POST['talleres']??[];  
-            $total=0;
-            $i=0;
-            
-            
-
-           $nombre = htmlspecialchars(
-            trim($nombre),
-            ENT_QUOTES, 'UTF-8'
-            );
-            
-            if (!is_numeric($edad) || $edad < 0 || $edad > 120) {
-                throw new Exception ("Error: la edad esta fuera de rango");
-            }
-
-            if ($i === 0){
-                throw new Exception("Error: no a marcado ningun taller");
-            }
-
-            if ($edad >= 18 && $tipo === "VIP"){
-                throw new Exception("Error: La entrada VIP está restringida a mayores de edad");
-            }
-            $total+=procesarInscripcion(array $talleres, int $total);
-            $total+=calcularPrecioBase(string $tipo,int $total);
-            
-                echo "<p>".$total."</p>";
-    
-        }
-    
-    
-    }catch (Exception $e){
-        echo "Error capturado: ". htmlspecialchars($e->getMessage()). "<br>";
-    }finally{
-        echo "Finalizando el script... (Guardando traza en el servidor)<br>";
-        error_log("[" . date('Y-m-d H:i:s') . "] Operación
-        finalizada. Divisor usado: " . $divisor);
+    foreach ($talleres as $taller => $precio) {
+        $total += $precio;
     }
-    
 
+    return $total;
+}
+
+$exito = false;
+
+try {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        $nombre   = $_POST['nombre'] ?? "";
+        $edad     = $_POST['edad'] ?? "";
+        $tipo     = $_POST['tipoEntrada'] ?? "";
+        $talleres = $_POST['talleres'] ?? [];
+
+        $nombre = htmlspecialchars(trim($nombre), ENT_QUOTES, 'UTF-8');
+
+        
+        if (!is_numeric($edad) || $edad <= 0 || $edad >=120) {
+            throw new Exception("La edad debe ser un número entero entre 1 y 120");
+        }
+
+        if (count($talleres) === 0) {
+            throw new Exception("No ha marcado ningún taller");
+        }
+
+        if ($edadInt < 18 && $tipo === "VIP") {
+            throw new Exception("La entrada VIP está restringida a mayores de edad");
+        }
+
+        $total = procesarInscripcion($tipo, $talleres);
+        $exito = true;
+
+        echo "<p>Total: " . $total . " euros</p>";
+    }
+} catch (Exception $e) {
+    echo "Error capturado: " . htmlspecialchars($e->getMessage()) . "<br>";
+} finally {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        error_log("[" . date('Y-m-d H:i:s') . "] Operación finalizada: " . ($exito ? "éxito" : "fallo"));
+    }
+}
 ?>
