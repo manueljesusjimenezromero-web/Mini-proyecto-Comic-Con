@@ -50,7 +50,7 @@ try {
             throw new Exception("No ha marcado ningún taller");
         }
 
-        if ($edadInt < 18 && $tipo === "VIP") {
+        if ($edad < 18 && $tipo === "VIP") {
             throw new Exception("La entrada VIP está restringida a mayores de edad");
         }
 
