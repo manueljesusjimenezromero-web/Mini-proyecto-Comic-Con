@@ -14,8 +14,7 @@
             $total=0;
 
             foreach ($talleres as $taller => $precio){
-                $total+=$precio;
-
+                
             }
             
             if (is_numeric($nombre)) {
