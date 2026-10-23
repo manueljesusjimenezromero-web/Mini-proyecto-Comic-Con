@@ -32,8 +32,8 @@
 
            $nombre = htmlspecialchars(
             trim($nombre),
-            ENT_QUOTES, 'UTF-8');
-
+            ENT_QUOTES, 'UTF-8'
+            );
             if ($edad < 18 && $tipo===$tipoEntrada){
                 echo "<p>".$edad."</p>";
             }
