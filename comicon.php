@@ -13,7 +13,7 @@
             $talleres=$_POST['talleres']??[];  
             $total=0;
 
-            for ($talleres as $taller => $precio){
+            foreach ($talleres as $taller => $precio){
                 $total+=$precio;
 
             }
