@@ -14,9 +14,10 @@
             $total=0;
 
             foreach ($talleres as $taller => $precio){
-                $total += (int)$precio;
+                $total += $precio;
             }
             
+
             if (is_numeric($nombre)) {
                 throw new Exception ("Error: solo se permiten caracteres");
             }
@@ -25,7 +26,7 @@
             }
 
             if ($total===0){
-
+                throw new Exception("Error: no a marcado ningun taller");
             }
 
 
@@ -34,7 +35,7 @@
             ENT_QUOTES, 'UTF-8'
             );
             
-            echo "<p>".$total."</p>";
+            echo "<p>".$tipo."</p>";   // General, VIP o Infantil
             
 
     
