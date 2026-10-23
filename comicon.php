@@ -12,8 +12,8 @@
         $talleres=$_POST['talleres']??[];  
         $total=0;
         
-        echo $nombre;
-        echo $edad;
+        echo "<p>".$nombre."</p>";
+        echo "<p>".$edad."</p>";
     }
     
     
