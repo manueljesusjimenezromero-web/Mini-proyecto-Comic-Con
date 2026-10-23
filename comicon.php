@@ -29,6 +29,7 @@
             trim($nombre),
             ENT_QUOTES, 'UTF-8'
             );
+            
             if (!is_numeric($edad) || $edad < 0 || $edad > 120) {
                 throw new Exception ("Error: la edad esta fuera de rango");
             }
@@ -37,8 +38,8 @@
                 throw new Exception("Error: no a marcado ningun taller");
             }
 
-            if ($edad < 18 && $tipo === "VIP"){
-                throw new Exception("Error: La entrada VIP está restringida a menores de edad");
+            if ($edad >= 18 && $tipo === "VIP"){
+                throw new Exception("Error: La entrada VIP está restringida a mayores de edad");
             }
         
             
