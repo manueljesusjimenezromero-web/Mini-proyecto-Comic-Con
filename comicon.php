@@ -17,7 +17,7 @@
                 $total+=$precio;
 
             }
-
+            
             if (is_numeric($nombre)) {
 
             }
