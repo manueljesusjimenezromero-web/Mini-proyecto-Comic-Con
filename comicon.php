@@ -34,7 +34,8 @@
             if (!is_numeric($edad) || $edad < 0 || $edad > 120) {
                 throw new Exception ("Error: la edad esta fuera de rango");
             }
-            if ($i>==0){
+
+            if ($i>=0){
                 throw new Exception("Error: no a marcado ningun taller");
             }
 
